@@ -69,7 +69,7 @@ yarn add next react react-dom
 - `start` - Next.js 프로덕션 서버를 시작하는 `next start`을 실행합니다.
 - `lint` - Next.js의 내장 ESLint 구성을 설정하는 `next lint`를 실행합니다
 
-Next.js는 [pages]() 개념을 중심으로 구축되었습니다. 페이지는 `pages` 폴더의 `.js`, `.jsx`, `.ts` 또는 `.tsx` 파일에서 내보낸 [React Component](https://reactjs.org/docs/components-and-props.html)입니다.
+Next.js는 [pages](https://github.com/qudwnbj/qudwnbj-translation-docs-md/blob/master/Next.js/Basic%20Features/pages.md) 개념을 중심으로 구축되었습니다. 페이지는 `pages` 폴더의 `.js`, `.jsx`, `.ts` 또는 `.tsx` 파일에서 내보낸 [React Component](https://reactjs.org/docs/components-and-props.html)입니다.
 
 페이지는 파일 이름에 따라 경로와 연결됩니다. 예를 들어 `pages/about.js`는 `/about`에 매핑됩니다. 파일 이름으로 동적 경로 변수를 추가할 수도 있습니다.
 
@@ -89,8 +89,8 @@ export default HomePage;
 
 - 자동 컴파일 및 번들링(webpack 및 babel 포함)
 - [React 빠른 새로 고침](https://nextjs.org/blog/next-9-4#fast-refresh)
-- [`./pages/`]()의 [static generation 및 server-side rendering]()
-- 정적 파일 제공. `./public/`은 `/`에 매핑됩니다.
+- [`./pages/`](https://github.com/qudwnbj/qudwnbj-translation-docs-md/blob/master/Next.js/Basic%20Features/pages.md)의 [static generation 및 server-side rendering](https://github.com/qudwnbj/qudwnbj-translation-docs-md/blob/master/Next.js/Basic%20Features/data-fetching.md)
+- [정적 파일 제공](https://github.com/qudwnbj/qudwnbj-translation-docs-md/blob/master/Next.js/Basic%20Features/static-file-serving.md). `./public/`은 `/`에 매핑됩니다.
 
 또한 모든 Next.js 애플리케이션은 처음부터 프로덕션에 사용할 준비가 되어 있습니다. 자세한 내용은 [배포 문서](https://nextjs.org/docs/deployment)를 참조하세요.
 
