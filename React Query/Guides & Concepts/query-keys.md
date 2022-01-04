@@ -27,7 +27,7 @@
   - 추가 옵션의 개체를 전달하는 것이 일반적입니다.
 
 ```js
-// 개별 todo
+ // 개별 todo
  useQuery(['todo', 5], ...)
  // queryKey === ['todo', 5]
 
@@ -68,4 +68,4 @@ function Todos({ todoId }) {
 }
 ```
 
-_last update : 2021.01.04_
+_last update : 2022.01.04_
