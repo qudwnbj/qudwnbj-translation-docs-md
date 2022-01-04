@@ -14,7 +14,7 @@ useQuery(["todos", todoId], async () => {
 useQuery(["todos", todoId], ({ queryKey }) => fetchTodoById(queryKey[1]));
 ```
 
-### 오류 발생 및 처리
+## 오류 발생 및 처리
 
 React Query가 쿼리에 오류가 발생했는지 확인하려면 쿼리 함수가 **throw되어야** 합니다. 쿼리 함수에서 발생한 모든 오류는 쿼리의 오류 상태에서 지속됩니다.
 
@@ -28,7 +28,7 @@ const { error } = useQuery(["todos", todoId], async () => {
 });
 ```
 
-### 기본적으로 throw하지 않는 `fetch` 및 기타 클라이언트와 함께 사용
+## 기본적으로 throw하지 않는 `fetch` 및 기타 클라이언트와 함께 사용
 
 `axios` 또는 `graphql-request`와 같은 대부분의 유틸리티는 실패한 HTTP 호출에 대해 자동으로 오류를 발생시키는 반면, `fetch`와 같은 일부 유틸리티는 기본적으로 오류를 발생시키지 않습니다. 그런 경우에는 직접 throw해야 합니다. 다음은 널리 사용되는 `fetch` API를 사용하여 이를 수행하는 간단한 방법입니다:
 
@@ -42,7 +42,7 @@ useQuery(["todos", todoId], async () => {
 });
 ```
 
-### 쿼리 함수 변수
+## 쿼리 함수 변수
 
 쿼리 키는 가져오는 데이터를 고유하게 식별하기 위한 것일 뿐만 아니라 쿼리 기능에 편리하게 전달되며 항상 필요한 것은 아니지만 필요한 경우 쿼리 기능을 추출할 수 있습니다:
 
@@ -58,7 +58,7 @@ function fetchTodoList({ queryKey }) {
 }
 ```
 
-### 변수 대신 쿼리 개체 사용
+## 변수 대신 쿼리 개체 사용
 
 `[queryKey, queryFn, config]` 서명이 React Query의 API 전체에서 지원되는 곳이면 어디에서나 객체를 사용하여 동일한 구성을 표현할 수도 있습니다:
 

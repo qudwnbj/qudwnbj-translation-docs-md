@@ -1,6 +1,6 @@
 # Queries
 
-### 기본 쿼리
+## 기본 쿼리
 
 쿼리는 **고유 키**에 연결된 비동기 데이터 소스에 대한 선언적 종속성입니다. 쿼리는 서버에서 데이터를 가져오기 위해 모든 Promise 기반 메서드(GET 및 POST 메서드 포함)와 함께 사용할 수 있습니다. method가 서버의 데이터를 수정하는 경우 쿼리 대신 [Mutations](https://github.com/qudwnbj/qudwnbj-translation-docs-md/blob/master/React%20Query/Guides%20%26%20Concepts/mutations.md)를 사용하는 것이 좋습니다.
 
