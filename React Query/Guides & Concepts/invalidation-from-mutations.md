@@ -15,7 +15,7 @@ import { useMutation, useQueryClient } from "react-query";
 
 const queryClient = useQueryClient();
 
-// When this mutation succeeds, invalidate any queries with the `todos` or `reminders` query key
+// 이 mutation이 성공하면 `todos` 또는 `reminders` 쿼리 키로 모든 쿼리를 무효화합니다.
 const mutation = useMutation(addTodo, {
   onSuccess: () => {
     queryClient.invalidateQueries("todos");
