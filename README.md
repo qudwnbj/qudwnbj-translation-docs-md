@@ -8,3 +8,7 @@
 
 - [React Query](https://react-query.tanstack.com/)
 - [Next.js](https://nextjs.org/)
+
+## to fix
+
+mutations => optimistic update 링크 고치기

@@ -51,3 +51,65 @@ mutation은 주어진 순간에 다음 상태 중 하나만 있을 수 있습니
 위의 예에서 **단일 변수 또는 객체**로 `mutate` 함수를 호출하여 mutation 함수에 변수를 전달할 수도 있음을 확인했습니다:
 
 변수만 있는 mutations가 그렇게 특별한 것은 아니지만 `onSuccess` 옵션, [Query Client의 `invalidateQueries` 메소드](https://react-query.tanstack.com/reference/QueryClient#queryclientinvalidatequeries) 및 [Query Client의 `setQueryData` 메소드](https://react-query.tanstack.com/reference/QueryClient#queryclientsetquerydata)와 함께 사용하면 mutations는 매우 강력한 도구가 됩니다.
+
+> 중요: `mutate` 함수는 비동기식 함수입니다. 즉, **React 16 및 이전 버전**의 이벤트 콜백에서 직접 사용할 수 없습니다. `onSubmit`의 이벤트에 액세스해야 하는 경우 다른 함수에서 `mutate`를 래핑해야 합니다. 이것은 [React 이벤트 풀링](https://reactjs.org/docs/legacy-event-pooling.html) 때문입니다.
+
+```js
+// React 16 및 그전 버전에서는 작동하지 않습니다.
+const CreateTodo = () => {
+  const mutation = useMutation((event) => {
+    event.preventDefault();
+    return fetch("/api", new FormData(event.target));
+  });
+
+  return <form onSubmit={mutation.mutate}>...</form>;
+};
+
+// 이건 작동합니다.
+const CreateTodo = () => {
+  const mutation = useMutation((formData) => {
+    return fetch("/api", formData);
+  });
+  const onSubmit = (event) => {
+    event.preventDefault();
+    mutation.mutate(new FormData(event.target));
+  };
+
+  return <form onSubmit={onSubmit}>...</form>;
+};
+```
+
+## Mutation 상태 재설정
+
+mutation 요청의 `error`나 `data`를 지워야 하는 경우가 있습니다. 이렇게 하려면 `reset` function을 사용하여 이를 처리할 수 있습니다.
+
+```js
+const CreateTodo = () => {
+  const [title, setTitle] = useState("");
+  const mutation = useMutation(createTodo);
+
+  const onCreateTodo = (e) => {
+    e.preventDefault();
+    mutation.mutate({ title });
+  };
+
+  return (
+    <form onSubmit={onCreateTodo}>
+      {mutation.error && (
+        <h5 onClick={() => mutation.reset()}>{mutation.error}</h5>
+      )}
+      <input
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <br />
+      <button type="submit">Create Todo</button>
+    </form>
+  );
+};
+```
+
+## Mutation Side Effects
+
+`useMutation`에는 mutation lifecycle 동안 모든 단계에서 빠르고 쉬운 side-effects을 허용하는 몇 가지 도우미 옵션이 있습니다. 이는 [optimistic 업데이트](https://react-query.tanstack.com/guides/optimistic-updates) 및 [mutation후 쿼리를 무효화하고 다시 가져오는 데](https://github.com/qudwnbj/qudwnbj-translation-docs-md/blob/master/React%20Query/Guides%20%26%20Concepts/invalidation-from-mutations.md) 모두 유용합니다.
