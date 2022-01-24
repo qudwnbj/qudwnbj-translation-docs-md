@@ -17,8 +17,7 @@ navigator.geolocation.getCurrentPosition(
   (error) => {
     console.log(error.code);
   }
-),
-  { timeout: Infinity, maximumAge: 0, enableHighAccuracty: true };
+),{ timeout: Infinity, maximumAge: 0, enableHighAccuracty: true });
 ```
 
 ## Parameter
