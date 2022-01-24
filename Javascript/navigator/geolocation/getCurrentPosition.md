@@ -2,6 +2,25 @@
 
 Javascript에서 현재 장치의 위치를 가져오는 API입니다.
 
+```js
+navigator.geolocation.getCurrentPosition(
+  successCallback,
+  errorCallback,
+  options
+);
+
+//USAGE
+navigator.geolocation.getCurrentPosition(
+  (position) => {
+    console.log(position.coords.latitude);
+  },
+  (error) => {
+    console.log(error.code);
+  }
+),
+  { timeout: Infinity, maximumAge: 0, enableHighAccuracty: true };
+```
+
 ## Parameter
 
 ### - `successCallback:(position) => void`
