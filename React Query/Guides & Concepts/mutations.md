@@ -113,3 +113,37 @@ const CreateTodo = () => {
 ## Mutation Side Effects
 
 `useMutation`에는 mutation lifecycle 동안 모든 단계에서 빠르고 쉬운 side-effects을 허용하는 몇 가지 도우미 옵션이 있습니다. 이는 [optimistic 업데이트](https://react-query.tanstack.com/guides/optimistic-updates) 및 [mutation후 쿼리를 무효화하고 다시 가져오는 데](https://github.com/qudwnbj/qudwnbj-translation-docs-md/blob/master/React%20Query/Guides%20%26%20Concepts/invalidation-from-mutations.md) 모두 유용합니다.
+
+```js
+useMutation(addTodo, {
+  onMutate: (variables) => {
+    // mutation 이 실행될 때
+
+    // 예를 들어 롤백할 때 사용할 데이터가 포함된 컨텍스트를 선택적으로 반환합니다.
+    return { id: 1 };
+  },
+  onError: (error, variables, context) => {
+    // 에러 발생
+    console.log(`rolling back optimistic update with id ${context.id}`);
+  },
+  onSuccess: (data, variables, context) => {
+    // Boom baby!
+  },
+  onSettled: (data, error, variables, context) => {
+    // 에러 또는 성공했을 때 .. 상관없습니다
+  },
+});
+```
+
+콜백 함수에서 promise를 반환할 때 다음 콜백이 호출되기 전에 먼저 기다립니다.
+
+```js
+useMutation(addTodo, {
+  onSuccess: async () => {
+    console.log("I'm first!");
+  },
+  onSettled: async () => {
+    console.log("I'm second!");
+  },
+});
+```
