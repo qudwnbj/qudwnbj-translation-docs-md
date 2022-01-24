@@ -4,7 +4,7 @@ Javascript에서 현재 장치의 위치를 가져오는 API입니다.
 
 ## Parameter
 
-### `successCallback:(position) => void`
+### - `successCallback:(position) => void`
 
 - **Parameter**
 
@@ -20,7 +20,7 @@ Javascript에서 현재 장치의 위치를 가져오는 API입니다.
 | `coords.speed`            | 초당 미터 단위로 장치의 속도를 나타내는 double을 반환합니다. 이 값은 null일 수 있습니다.                                                                                                                                                                                                                                    | number(double) \| null |
 | `timestamp`               | 현재 시간을 timestamp로 반환합니다.                                                                                                                                                                                                                                                                                         | number(long)           |
 
-### `errorCallback:(error) => void`
+### - `errorCallback:(error) => void`
 
 - **Parameter**
 
@@ -29,7 +29,7 @@ Javascript에서 현재 장치의 위치를 가져오는 API입니다.
 | `code`    | 에러 코드 1: PERMISSION_DENIED, 2: POSITION_UNAVAILAVLE, 3: TIMEOUT | 1 \| 2 \| 3 |
 | `message` | 에러메세지                                                          | string      |
 
-### `options`
+### - `options`
 
 | Name                 | Description                                                                                                                                                                                                                                                                                                                                    | Type         |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
